@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
@@ -122,7 +122,7 @@ export default function Hero() {
         >
           Hayne Industries delivers <strong className="text-[#333]">physical security systems</strong>,{" "}
           <strong className="text-[#333]">cybersecurity solutions</strong>, and{" "}
-          <strong className="text-[#333]">commercial &amp; residential cleaning</strong> under one contract —
+          <strong className="text-[#333]">commercial &amp; residential cleaning</strong> under one contract â€”
           for federal, state, and commercial environments nationwide.
         </motion.p>
 
@@ -134,7 +134,7 @@ export default function Hero() {
           className="mt-8 flex flex-col sm:flex-row gap-3 justify-center"
         >
           <a
-            href="#connect"
+            href="/quote"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold-dark hover:bg-gold text-white font-medium text-sm tracking-wide transition-all duration-200 group"
           >
             Get a Free Quote
@@ -198,3 +198,4 @@ export default function Hero() {
     </section>
   );
 }
+
