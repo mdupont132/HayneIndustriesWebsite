@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --background-light: #111111;
+  --foreground: #f5f5f0;
+  --foreground-muted: #a3a3a3;
+  --gold: #c9a84c;
+  --gold-dark: #b8952f;
+  --gold-light: #d4b96a;
+  --surface: #1a1a1a;
+  --surface-light: #242424;
+  --charcoal: #4a4a4a;
+  --border: rgba(201, 168, 76, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-light: var(--background-light);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-light: var(--gold-light);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-charcoal: var(--charcoal);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.panel-dark {
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid var(--border);
+}
+
+.ring-pattern {
+  background-image:
+    radial-gradient(circle at center, transparent 200px, rgba(201, 168, 76, 0.02) 201px, transparent 202px),
+    radial-gradient(circle at center, transparent 350px, rgba(201, 168, 76, 0.015) 351px, transparent 352px),
+    radial-gradient(circle at center, transparent 500px, rgba(201, 168, 76, 0.01) 501px, transparent 502px);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+.logo-white {
+  filter: invert(1) brightness(2);
+  mix-blend-mode: screen;
+}
+
+/* Dashboard scanlines */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Radar sweep */
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.radar-sweep {
+  animation: radar-sweep 4s linear infinite;
+}
+
+/* Pulse ring */
+@keyframes pulse-ring-out {
+  0% { transform: scale(0.3); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* Cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+}
+
+/* Glow effect for active elements */
+.glow-gold {
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.15), inset 0 0 8px rgba(201, 168, 76, 0.05);
+}
+
+/* Dashboard crosshair grid */
+.crosshair-grid {
+  background-image:
+    radial-gradient(circle at center, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
