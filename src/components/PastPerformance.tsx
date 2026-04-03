@@ -162,11 +162,11 @@ export default function PastPerformance() {
                 >
                   {/* Background image */}
                   <div
-                    className="absolute inset-0 bg-cover bg-center opacity-[0.08] group-hover:opacity-[0.14] transition-opacity duration-500"
+                    className="absolute inset-0 bg-cover bg-center opacity-[0.25] group-hover:opacity-[0.35] transition-opacity duration-500"
                     style={{ backgroundImage: `url(${project.image})` }}
                   />
                   {/* Dark overlay for readability */}
-                  <div className="absolute inset-0 bg-surface/95 group-hover:bg-surface/90 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-surface/80 group-hover:bg-surface/70 transition-colors duration-500" />
 
                   <div className="relative z-10">
                     <div className="flex items-start justify-between gap-3 mb-4">

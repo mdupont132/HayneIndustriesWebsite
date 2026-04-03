@@ -3,7 +3,6 @@
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 import DiamondDivider from "./DiamondDivider";
-import USMap from "./USMap";
 import {
   Camera,
   Fingerprint,
@@ -254,15 +253,23 @@ export default function WhatWeDo() {
 
         {/* Serving the Continental US */}
         <AnimatedSection className="mt-16">
-          <div className="panel p-6 lg:p-8 text-center">
-            <DiamondDivider className="mb-4" />
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight mb-2">
-              Serving the <span className="text-gold">Continental United States</span>
-            </h3>
-            <p className="text-sm text-foreground-muted/50 mb-6 max-w-lg mx-auto">
-              Nationwide reach with local expertise. Hover over any state to explore our coverage.
-            </p>
-            <USMap />
+          <div className="panel p-5 lg:p-6 flex flex-col sm:flex-row items-center gap-5 max-w-2xl mx-auto">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 relative overflow-hidden border border-gold/20">
+              <Image
+                src="/us-flag-map.svg"
+                alt="United States Flag Map"
+                fill
+                className="object-contain p-1"
+              />
+            </div>
+            <div className="text-center sm:text-left">
+              <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-tight mb-1">
+                Serving the <span className="text-gold">Continental United States</span>
+              </h3>
+              <p className="text-sm text-foreground-muted/50">
+                Nationwide reach with local expertise across federal, state, and commercial environments.
+              </p>
+            </div>
           </div>
         </AnimatedSection>
       </div>

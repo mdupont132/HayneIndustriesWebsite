@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
@@ -122,7 +122,7 @@ export default function Hero() {
         >
           Hayne Industries delivers <strong className="text-[#333]">physical security systems</strong>,{" "}
           <strong className="text-[#333]">cybersecurity solutions</strong>, and{" "}
-          <strong className="text-[#333]">commercial &amp; residential cleaning</strong> under one contract â€”
+          <strong className="text-[#333]">commercial &amp; residential cleaning</strong> under one contract
           for federal, state, and commercial environments nationwide.
         </motion.p>
 
@@ -198,4 +198,3 @@ export default function Hero() {
     </section>
   );
 }
-
