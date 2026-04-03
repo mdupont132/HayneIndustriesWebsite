@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import DiamondDivider from "./DiamondDivider";
 import {
@@ -156,16 +157,26 @@ export default function PostConstructionCleanup() {
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {facilityTypes.map((ft) => (
-                <div
+              {facilityTypes.map((ft, i) => (
+                <motion.div
                   key={ft.label}
-                  className="flex flex-col items-center gap-2 py-3 border border-gold/10 bg-surface-light/30 hover:border-gold/30 transition-colors group"
+                  whileHover={{ y: -4, scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  className="relative flex flex-col items-center gap-2 py-4 border border-gold/10 bg-surface-light/30 hover:border-gold/40 hover:bg-gold/[0.06] transition-all duration-300 group cursor-pointer overflow-hidden"
                 >
-                  <ft.icon className="w-5 h-5 text-gold/40 group-hover:text-gold/70 transition-colors" />
-                  <span className="text-[10px] font-medium tracking-wider uppercase text-foreground-muted/40 group-hover:text-foreground-muted/70 transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-t from-gold/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <motion.div
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <ft.icon className="w-6 h-6 text-gold/40 group-hover:text-gold transition-colors duration-300 relative z-10" />
+                  </motion.div>
+                  <span className="text-[10px] font-medium tracking-wider uppercase text-foreground-muted/40 group-hover:text-foreground-muted/80 transition-colors duration-300 relative z-10">
                     {ft.label}
                   </span>
-                </div>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gold/40 group-hover:w-2/3 transition-all duration-300" />
+                </motion.div>
               ))}
             </div>
           </div>

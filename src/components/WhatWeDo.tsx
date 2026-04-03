@@ -3,6 +3,7 @@
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 import DiamondDivider from "./DiamondDivider";
+import USMap from "./USMap";
 import {
   Camera,
   Fingerprint,
@@ -193,13 +194,14 @@ export default function WhatWeDo() {
         </AnimatedSection>
 
         {/* ── Physical Security Division ── */}
-        <AnimatedSection className="mb-6">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-1.5 h-1.5 rotate-45 bg-gold" />
-            <h3 className="text-xs font-mono font-medium tracking-[0.2em] uppercase text-gold/70">
-              Physical Security Division — NAICS 561612
+        <AnimatedSection className="mb-8">
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-2 h-2 rotate-45 bg-gold" />
+            <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-gold">
+              Physical Security Division
             </h3>
-            <div className="flex-1 h-px bg-gold/10" />
+            <div className="flex-1 h-px bg-gradient-to-r from-gold/30 to-transparent" />
+            <span className="text-[10px] font-mono text-gold/40 tracking-widest hidden sm:block">NAICS 561612</span>
           </div>
         </AnimatedSection>
 
@@ -212,13 +214,13 @@ export default function WhatWeDo() {
         </div>
 
         {/* ── Cybersecurity Division ── */}
-        <AnimatedSection className="mb-6">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-1.5 h-1.5 rotate-45 bg-gold" />
-            <h3 className="text-xs font-mono font-medium tracking-[0.2em] uppercase text-gold/70">
+        <AnimatedSection className="mb-8">
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-2 h-2 rotate-45 bg-gold" />
+            <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-gold">
               Cybersecurity Division
             </h3>
-            <div className="flex-1 h-px bg-gold/10" />
+            <div className="flex-1 h-px bg-gradient-to-r from-gold/30 to-transparent" />
           </div>
         </AnimatedSection>
 
@@ -231,13 +233,14 @@ export default function WhatWeDo() {
         </div>
 
         {/* ── Facility Services Division ── */}
-        <AnimatedSection className="mb-6">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-1.5 h-1.5 rotate-45 bg-gold" />
-            <h3 className="text-xs font-mono font-medium tracking-[0.2em] uppercase text-gold/70">
-              Facility Services Division — NAICS 561720
+        <AnimatedSection className="mb-8">
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-2 h-2 rotate-45 bg-gold" />
+            <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-gold">
+              Facility Services Division
             </h3>
-            <div className="flex-1 h-px bg-gold/10" />
+            <div className="flex-1 h-px bg-gradient-to-r from-gold/30 to-transparent" />
+            <span className="text-[10px] font-mono text-gold/40 tracking-widest hidden sm:block">NAICS 561720</span>
           </div>
         </AnimatedSection>
 
@@ -249,11 +252,18 @@ export default function WhatWeDo() {
           ))}
         </div>
 
-        {/* Serving note */}
-        <AnimatedSection className="mt-12 text-center">
-          <p className="text-xs font-mono text-foreground-muted/40 tracking-wide">
-            SERVING THE CONTINENTAL UNITED STATES
-          </p>
+        {/* Serving the Continental US */}
+        <AnimatedSection className="mt-16">
+          <div className="panel p-6 lg:p-8 text-center">
+            <DiamondDivider className="mb-4" />
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight mb-2">
+              Serving the <span className="text-gold">Continental United States</span>
+            </h3>
+            <p className="text-sm text-foreground-muted/50 mb-6 max-w-lg mx-auto">
+              Nationwide reach with local expertise. Hover over any state to explore our coverage.
+            </p>
+            <USMap />
+          </div>
         </AnimatedSection>
       </div>
     </section>

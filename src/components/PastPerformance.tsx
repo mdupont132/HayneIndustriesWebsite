@@ -24,6 +24,7 @@ const projects = [
     year: "2024",
     client: "Doyon / U.S. Army",
     category: "Federal",
+    image: "/post-construction.jpg",
     description:
       "Comprehensive post-construction cleanup for a U.S. Army installation. Entailed removal of debris and proper waste sorting and disposal, cleaning of all surfaces including sweeping, vacuuming, and wall cleaning, followed by detailed cleaning of windows, fixtures, and floors. Final phase focused on sanitization of surfaces, particularly in bathrooms and kitchens, along with quality checks throughout to ensure the space was completely clean and ready for occupancy.",
     tags: ["Post-Construction", "Federal", "Sanitization"],
@@ -35,30 +36,33 @@ const projects = [
     year: "2024",
     client: "Private Client",
     category: "Commercial",
+    image: "/office-clean.jpg",
     description:
       "Full interior conversion of a former bank building into a dining establishment. Obtained permits from Baltimore City, then gutted the interior while preserving the structure. Reconfigured the space by removing teller counters and vault, creating a dining room area. Updated electrical systems, added restaurant-specific features and restrooms, and finished with appropriate lighting, decor, and furniture to transform the formal bank atmosphere into a welcoming dining establishment.",
     tags: ["Renovation", "Commercial"],
   },
   {
     icon: Home,
-    title: "Residential Housing Reconstruction",
+    title: "Residential Reconstruction Cleanup",
     location: "Brooklyn, MD",
     year: "2023",
     client: "Private Client",
     category: "Residential",
+    image: "/hero-cleaning.jpg",
     description:
-      "Complete residential housing reconstruction from the ground up. Secured permits and conducted environmental assessments before disconnecting utilities and beginning demolition. After clearing and preparing the site, poured new foundations and rebuilt the apartments, installing all systems and finishes while maintaining code compliance throughout the project.",
-    tags: ["Residential", "Ground-Up"],
+      "Comprehensive post-reconstruction cleanup following a full residential rebuild. After construction was completed, our team performed detailed debris removal, dust and particulate cleaning of all surfaces, deep cleaning of newly installed fixtures, windows, and flooring, and final polish of every room to ensure a pristine, move-in ready condition for occupants.",
+    tags: ["Residential", "Post-Construction", "Final Polish"],
   },
   {
     icon: Landmark,
-    title: "Department of the Army — Recurring Janitorial",
+    title: "U.S. Army — Recurring Janitorial",
     location: "Fort Detrick, MD",
     year: "2022 – Present",
-    client: "Department of the Army",
+    client: "U.S. Army",
     category: "Federal",
+    image: "/hero-security.jpg",
     description:
-      "Ongoing janitorial services contract for a Department of the Army installation. Scope includes cleaning offices, kitchens, and bathrooms three times per week. Activities include vacuuming carpets, mopping floors, dusting, waxing the floors, and sanitizing the area with electrostatic sprayer for a deep clean.",
+      "Ongoing janitorial services contract for a U.S. Army installation. Scope includes cleaning offices, kitchens, and bathrooms three times per week. Activities include vacuuming carpets, mopping floors, dusting, waxing the floors, and sanitizing the area with electrostatic sprayer for a deep clean.",
     tags: ["Federal", "Recurring", "Janitorial"],
   },
   {
@@ -68,6 +72,7 @@ const projects = [
     year: "2022 – Present",
     client: "Allegheny College",
     category: "Education",
+    image: "/hero-cleaning.jpg",
     description:
       "5-year contract for annual cleaning of student apartments, clubhouse, and shared areas over the course of several weeks. Activities include vacuuming and shampooing carpets, mopping and waxing concrete floors, dusting, cleaning windows, power washing, and sanitizing the area with electrostatic sprayer for a deep clean.",
     tags: ["Education", "Deep Clean", "Multi-Year"],
@@ -79,6 +84,7 @@ const projects = [
     year: "2021 – Present",
     client: "Warner Construction",
     category: "Commercial",
+    image: "/post-construction.jpg",
     description:
       "Ongoing post-construction cleaning across hospitals, fire stations, and city buildings. Scope includes offices, kitchens, and conference rooms. Activities include vacuuming and shampooing carpets, mopping floors, dusting, waxing floors, cleaning windows, power washing, and sanitizing the area with electrostatic sprayer for a deep clean.",
     tags: ["Post-Construction", "Healthcare", "Municipal"],
@@ -151,48 +157,58 @@ export default function PastPerformance() {
                 transition={{ duration: 0.3, delay: i * 0.05 }}
               >
                 <div
-                  className="bg-surface border border-gold/15 p-6 h-full group hover:border-gold/35 transition-all duration-300 cursor-pointer"
+                  className="relative border border-gold/15 p-6 h-full group hover:border-gold/35 transition-all duration-300 cursor-pointer overflow-hidden"
                   onClick={() => setExpandedIndex(expandedIndex === i ? null : i)}
                 >
-                  <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="w-10 h-10 shrink-0 border border-gold/20 flex items-center justify-center group-hover:border-gold/40 transition-colors">
-                      <project.icon className="w-4.5 h-4.5 text-gold/50 group-hover:text-gold/80 transition-colors" />
+                  {/* Background image */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-[0.08] group-hover:opacity-[0.14] transition-opacity duration-500"
+                    style={{ backgroundImage: `url(${project.image})` }}
+                  />
+                  {/* Dark overlay for readability */}
+                  <div className="absolute inset-0 bg-surface/95 group-hover:bg-surface/90 transition-colors duration-500" />
+
+                  <div className="relative z-10">
+                    <div className="flex items-start justify-between gap-3 mb-4">
+                      <div className="w-10 h-10 shrink-0 border border-gold/20 flex items-center justify-center group-hover:border-gold/40 transition-colors bg-surface/60 backdrop-blur-sm">
+                        <project.icon className="w-4.5 h-4.5 text-gold/50 group-hover:text-gold/80 transition-colors" />
+                      </div>
+                      <ChevronRight
+                        className={`w-4 h-4 text-gold/30 transition-transform duration-300 shrink-0 mt-1 ${
+                          expandedIndex === i ? "rotate-90" : ""
+                        }`}
+                      />
                     </div>
-                    <ChevronRight
-                      className={`w-4 h-4 text-gold/30 transition-transform duration-300 shrink-0 mt-1 ${
-                        expandedIndex === i ? "rotate-90" : ""
-                      }`}
-                    />
+                    <h3 className="font-serif text-base font-semibold text-foreground mb-2 leading-snug">
+                      {project.title}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-3 mb-3 text-[10px] text-foreground-muted/50">
+                      <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{project.location}</span>
+                      <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{project.year}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 text-[8px] font-mono font-medium tracking-wider text-gold/60 border border-gold/15 bg-gold/[0.06] backdrop-blur-sm">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <AnimatePresence>
+                      {expandedIndex === i && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pt-3 border-t border-gold/10">
+                            <p className="text-sm text-foreground-muted/60 leading-relaxed">{project.description}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                  <h3 className="font-serif text-base font-semibold text-foreground mb-2 leading-snug">
-                    {project.title}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-3 mb-3 text-[10px] text-foreground-muted/40">
-                    <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{project.location}</span>
-                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{project.year}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 text-[8px] font-mono font-medium tracking-wider text-gold/60 border border-gold/15 bg-gold/[0.04]">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <AnimatePresence>
-                    {expandedIndex === i && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pt-3 border-t border-gold/10">
-                          <p className="text-sm text-foreground-muted/60 leading-relaxed">{project.description}</p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
               </motion.div>
             ))}

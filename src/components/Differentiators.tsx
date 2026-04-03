@@ -95,23 +95,32 @@ export default function Differentiators() {
           {differentiators.map((d, i) => (
             <AnimatedSection key={d.title} delay={i * 0.08}>
               <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.2 }}
-                className="relative bg-surface border border-gold/15 p-6 h-full group hover:border-gold/40 transition-all duration-300 overflow-hidden"
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative bg-surface border border-gold/15 p-6 h-full group hover:border-gold/50 transition-all duration-500 overflow-hidden cursor-pointer"
               >
-                <div className="absolute -right-2 -top-2 font-serif text-6xl font-bold text-gold/[0.04] select-none leading-none">
+                {/* Animated background glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] via-transparent to-gold/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -right-4 -top-4 font-serif text-7xl font-bold text-gold/[0.04] group-hover:text-gold/[0.08] select-none leading-none transition-all duration-500 group-hover:scale-110">
                   {d.stat}
                 </div>
+                {/* Corner accent line */}
+                <div className="absolute top-0 left-0 w-0 h-[2px] bg-gradient-to-r from-gold to-transparent group-hover:w-full transition-all duration-500" />
+                <div className="absolute top-0 left-0 w-[2px] h-0 bg-gradient-to-b from-gold to-transparent group-hover:h-full transition-all duration-500 delay-100" />
+
                 <div className="relative">
-                  <div className="w-11 h-11 border border-gold/20 flex items-center justify-center mb-4 group-hover:border-gold/50 group-hover:bg-gold/5 transition-all duration-300">
-                    <d.icon className="w-5 h-5 text-gold/50 group-hover:text-gold transition-colors" />
-                  </div>
+                  <motion.div
+                    whileHover={{ rotate: 5 }}
+                    className="w-12 h-12 border border-gold/20 flex items-center justify-center mb-4 group-hover:border-gold/60 group-hover:bg-gold/10 group-hover:shadow-[0_0_20px_rgba(201,168,76,0.15)] transition-all duration-500"
+                  >
+                    <d.icon className="w-5 h-5 text-gold/50 group-hover:text-gold transition-colors duration-300" />
+                  </motion.div>
                   <div className="inline-flex items-baseline gap-1.5 mb-3">
-                    <span className="font-serif text-2xl font-bold text-gold">{d.stat}</span>
-                    <span className="text-[9px] font-mono tracking-widest text-gold/40 uppercase">{d.statLabel}</span>
+                    <span className="font-serif text-3xl font-bold text-gold group-hover:text-gold-light transition-colors duration-300">{d.stat}</span>
+                    <span className="text-[9px] font-mono tracking-widest text-gold/40 group-hover:text-gold/60 uppercase transition-colors duration-300">{d.statLabel}</span>
                   </div>
-                  <h3 className="font-serif text-base font-semibold text-foreground mb-2">{d.title}</h3>
-                  <p className="text-sm text-foreground-muted/55 leading-relaxed">{d.description}</p>
+                  <h3 className="font-serif text-base font-semibold text-foreground mb-2 group-hover:text-gold-light transition-colors duration-300">{d.title}</h3>
+                  <p className="text-sm text-foreground-muted/55 leading-relaxed group-hover:text-foreground-muted/70 transition-colors duration-300">{d.description}</p>
                 </div>
               </motion.div>
             </AnimatedSection>
